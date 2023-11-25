@@ -1,39 +1,18 @@
-import {View, Text} from 'react-native';
-import * as React from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import React from "react";
 
-const Tab = createBottomTabNavigator();
-
-export default function Navigation() {
-  return (
-    <Tab.Navigator>
-      <Tab.Screen name={'Home'} component={HomeScreen} />
-      <Tab.Screen name={'About'} component={AboutScreen} />
-      <Tab.Screen name={'Settings'} component={SettingsScreen} />
-    </Tab.Navigator>
-  );
-}
-
-function HomeScreen({navigation}) {
-  return (
-    <View>
-      <Text>Home screen</Text>
-    </View>
-  );
-}
-
-function AboutScreen({navigation}) {
-  return (
-    <View>
-      <Text>About screen</Text>
-    </View>
-  );
-}
-
-function SettingsScreen({navigation}) {
-  return (
-    <View>
-      <Text>Settings screen</Text>
-    </View>
-  );
+export default class Navigation {
+  static navigationRef = React.createRef();
+  // Навигация на экран
+  static navigate = (routeName, params) => {
+    setTimeout(() => this.navigationRef.current?.navigate(routeName, params), 0);
+  };
+  // Сброс стека навигации и переход на дефолтный первый экран
+  static replace = (routeName, params) => {
+    setTimeout(
+      () =>
+        this.navigationRef.current?.reset({
+          index: 0,
+          routes: [{ name: routeName, params: params }],
+  }), 0,
+); };
 }
