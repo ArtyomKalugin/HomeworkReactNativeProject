@@ -1,10 +1,15 @@
-import {View, Text} from 'react-native';
+import { View, Text, Button } from "react-native";
 import * as React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { observer } from "mobx-react";
+import { useTranslation } from "react-i18next";
+import { useRootStore } from "../../Store/RootStore/UseRootStore";
+import { LangType } from "../../Modules/Lang/LangType";
+import { useEffect } from "react";
 
 const Tab = createBottomTabNavigator();
 
-export default function NavigationScreen() {
+export const NavigationScreen = observer(() => {
   return (
     <Tab.Navigator>
       <Tab.Screen name={'Home'} component={HomeScreen} />
@@ -12,12 +17,28 @@ export default function NavigationScreen() {
       <Tab.Screen name={'Settings'} component={SettingsScreen} />
     </Tab.Navigator>
   );
-}
+})
 
 function HomeScreen({navigation}) {
+  const {langStore} = useRootStore();
+  const {t} = useTranslation();
+
+  useEffect(() => {
+    langStore.getLang();
+  }, []);
+
+  const handleChangingLang = async () => {
+    await langStore.changeLang(
+      LangType.RU === langStore.lang ? LangType.EN : LangType.RU
+    )
+  }
+
   return (
     <View>
-      <Text>Home screen</Text>
+      <Button
+        title="Change language"
+        onPress={() => handleChangingLang()} />
+      <Text>{t('tab.homeScreen')}</Text>
     </View>
   );
 }
