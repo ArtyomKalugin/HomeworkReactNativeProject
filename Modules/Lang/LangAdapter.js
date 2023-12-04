@@ -4,7 +4,6 @@ import * as en from "./Localization/en.json";
 import * as ru from "./Localization/ru.json";
 import { LangType } from "./LangType";
 
-export const defaultNS = "common";
 export const resources = {
   ru: {
     translation: ru,
@@ -16,7 +15,7 @@ export const resources = {
 
 i18n.use(initReactI18next).init({
   resources,
-  defaultNS,
+  debug: true,
   lng: LangType.RU,
   compatibilityJSON: "v3",
   returnNull: false, interpolation: {
