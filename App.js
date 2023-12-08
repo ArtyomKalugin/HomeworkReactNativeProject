@@ -6,8 +6,11 @@ import { useEffect } from "react";
 import { Linking, Text } from "react-native";
 import * as React from "react";
 import { useRootStore } from "./Store/RootStore/UseRootStore";
+import { observer } from "mobx-react";
+import { ThemeProviders } from "./Modules/Theme/ThemeProvider";
+import { ThemeTypes } from "./Modules/Theme/ThemeTypes";
 
-export default function App() {
+export const App = observer(() => {
   const {langStore} = useRootStore();
 
   useEffect(() => {
@@ -19,8 +22,10 @@ export default function App() {
   }, []);
 
   return (
-    <NavigationContainer ref={Navigation.navigationRef} linking={DeepLinking.linking}>
-      {langStore.isLoading ? <Text>Loading</Text> : <NavigationScreen />}
-    </NavigationContainer>
+    <ThemeProviders>
+      <NavigationContainer ref={Navigation.navigationRef} linking={DeepLinking.linking}>
+        <NavigationScreen />
+      </NavigationContainer>
+    </ThemeProviders>
   );
-}
+})
