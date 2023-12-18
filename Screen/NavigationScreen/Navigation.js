@@ -58,7 +58,16 @@ const HomeScreen = observer(() => {
       <Button
         title="Change theme"
         onPress={() => handleChangingTheme()} />
-      <Text>{t('tab.homeScreen')}</Text>
+      <Text
+        style={{
+          color: 'black',
+          fontSize: 24,
+          fontFamily: 'RubikBubbles-Regular'
+        }
+        }
+      >
+        {t('tab.homeScreen')}
+      </Text>
     </View>
   );
 })
