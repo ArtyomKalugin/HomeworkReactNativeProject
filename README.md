@@ -23,3 +23,10 @@ https://github.com/ArtyomKalugin/HomeworkReactNativeProject/assets/45566988/12ea
 https://github.com/ArtyomKalugin/HomeworkReactNativeProject/assets/45566988/e2e2443b-a580-4e76-9fe7-4f950c605cca
 
 
+### Задание 11
+
+
+![Simulator Screenshot - iPhone 14 Pro - 2023-12-18 at 22 00 43](https://github.com/ArtyomKalugin/HomeworkReactNativeProject/assets/45566988/9e1191ad-3c79-410f-aa24-468ce451a54a)
+
+
+
